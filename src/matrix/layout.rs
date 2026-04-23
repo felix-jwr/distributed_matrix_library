@@ -1,8 +1,8 @@
 use std::cmp::min;
 
 pub struct DistributionLayout {
-    pub global_rows: usize,
-    pub global_cols: usize,
+    global_rows: usize,
+    global_cols: usize,
     tile_rows: usize,
     tile_cols: usize,
     num_nodes: usize,
@@ -59,5 +59,9 @@ impl DistributionLayout {
 
         let tile_index = tile_row * self.num_tile_cols() + tile_col;
         tile_index % self.num_nodes
+    }
+
+    pub fn shape(&self) -> (usize, usize) {
+        (self.global_rows, self.global_cols)
     }
 }

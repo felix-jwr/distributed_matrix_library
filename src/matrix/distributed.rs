@@ -62,7 +62,8 @@ impl DistributedMatrix {
     }
 
     fn check_index_valid(&self, i: usize, j: usize) {
-        if i >= self.layout.global_rows || j >= self.layout.global_cols {
+        let (global_rows, global_cols) = self.layout.shape();
+        if i >= global_rows || j >= global_cols {
             panic!("Index out of bounds");
         }
     }
